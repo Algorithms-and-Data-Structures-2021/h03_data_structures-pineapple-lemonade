@@ -11,6 +11,7 @@ namespace itis {
         }else{
             back_->next = node;
         }
+        back_ = node;
         size_++;
     }
 
@@ -21,6 +22,7 @@ namespace itis {
         }else{
             front_->previous = node;
         }
+        front_ = node;
         size_++;
     }
 
@@ -28,6 +30,7 @@ namespace itis {
         if (size_ == 0) {
             throw std::logic_error("cannot not dequeue from empty queue");
         }
+
         if (size_ == 1) {
             delete front_;
             front_ = nullptr;
@@ -65,7 +68,7 @@ namespace itis {
 
     void LinkedDequeue::Clear() {
         while (front_!= nullptr){
-            auto node = front_->next;
+            DoublyNode *node = front_->next;
             delete front_;
             front_ = node;
         }
